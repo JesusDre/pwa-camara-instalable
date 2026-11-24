@@ -1,0 +1,89 @@
+/*
+  Este archivo es como la "caja de crayones" de nuestra app:
+  aqui decimos de que color y forma se ve todo. No tiene logica,
+  solo decoracion.
+*/
+
+/* Pintamos toda la pagina con un color oscuro bonito */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+header {
+  padding: 24px 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+header p {
+  opacity: 0.8;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+/* Cada "tarjeta" es como una cajita redondeada que agrupa cosas */
+.tarjeta {
+  background-color: #1e293b;
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+/* Las tarjetas de aviso tienen un borde amarillo para llamar la atencion */
+.aviso {
+  border: 2px solid #facc15;
+}
+
+/* Todos los botones se ven grandes y faciles de tocar con el dedo */
+button {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: #0ea5e9;
+}
+
+/* El video lo hacemos redondeado y que no se salga de su cajita */
+video {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  background-color: black;
+}
+
+.botones-camara {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+footer {
+  margin-top: 24px;
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
