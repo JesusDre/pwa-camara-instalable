@@ -1,122 +1,73 @@
 <!DOCTYPE html>
-<!--
-  Hola! Este archivo es como la "cara" de nuestra aplicacion.
-  Es lo primero que el telefono o la computadora va a leer.
-  Vamos a explicar cada parte como si fuera un cuento facil de entender.
--->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Esto le dice al telefono: "achica o agranda la pantalla para que se vea bien" -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cámara PWA</title>
 
-  <title>Camara PWA</title>
-
-  <!--
-    El "manifest.json" es como la TARJETA DE IDENTIFICACION de nuestra app:
-    tiene su nombre, su color y sus iconos (fotos). Gracias a esta tarjeta,
-    el telefono puede decir "esto se puede instalar como una app de verdad".
-  -->
+  <!-- Manifest: nombre, colores e iconos para poder instalar la app -->
   <link rel="manifest" href="./manifest.json">
-
-  <!-- Este color pinta la barra de arriba del telefono cuando abres la app -->
   <meta name="theme-color" content="#0f172a">
 
-  <!--
-    Los iPhone (celulares de Apple) no entienden bien el manifest.json
-    para el icono de la pantalla de inicio, por eso le damos este
-    "cartelito" extra con la foto que debe usar.
-  -->
+  <!-- iPhone: icono de la pantalla de inicio -->
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- Aqui conectamos los "colores y estilos" de nuestra pagina -->
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
-  <!-- ====================================================== -->
-  <!--  ENCABEZADO: el titulo grande de la app                 -->
-  <!-- ====================================================== -->
   <header>
-    <h1>📷 Mi Camara PWA</h1>
-    <p>Una app que se instala en tu telefono como las de verdad.</p>
+    <h1>Mi Cámara PWA</h1>
+    <p>Una app que se instala en tu teléfono.</p>
   </header>
 
   <main>
 
-    <!-- ====================================================== -->
-    <!-- BOTON PARA INSTALAR LA APP (solo aparece si se puede)   -->
-    <!-- ====================================================== -->
+    <!-- Botón de instalar: oculto hasta que llegue beforeinstallprompt -->
     <section class="tarjeta">
-      <button id="btn-instalar" hidden>⬇️ Instalar esta App</button>
+      <button id="btn-instalar" hidden>Instalar esta App</button>
     </section>
 
-    <!--
-      MENSAJE ESPECIAL PARA IPHONE:
-      Los iPhone no muestran el boton de instalar solitos, asi que si
-      detectamos un iPhone, mostramos instrucciones escritas aqui.
-    -->
-    <section id="aviso-ios" class="tarjeta aviso" hidden>
+    <!-- iPhone: instrucciones manuales (Safari no tiene beforeinstallprompt) -->
+    <section id="instrucciones-ios" class="tarjeta aviso" hidden>
       <p>
-        📱 Para instalar esta app en tu iPhone: toca el boton
-        <strong>Compartir</strong> (el cuadrito con la flecha) y luego
-        elige <strong>"Agregar a pantalla de inicio"</strong>.
+        Para instalar en iPhone, pulsa el icono <strong>Compartir</strong>
+        y selecciona <strong>"Agregar a inicio"</strong>.
       </p>
     </section>
 
-    <!-- ====================================================== -->
-    <!-- TARJETA DE AVISO ETICO (el "permiso explicado")         -->
-    <!-- Esto se muestra ANTES de pedir permiso de la camara de  -->
-    <!-- verdad, para que el usuario no se asuste ni la bloquee. -->
-    <!-- ====================================================== -->
+    <!-- Aviso ético: se muestra ANTES de pedir el permiso real -->
     <section id="aviso-permiso" class="tarjeta aviso" hidden>
       <p>
-        🔒 Esta aplicacion requiere acceso a tu camara
-        <strong>unicamente para mostrar una vista previa local en pantalla</strong>.
-        Ninguna imagen se envia a servidores externos.
+        Esta aplicación requiere acceso a tu cámara únicamente para mostrar
+        una vista previa local en pantalla. Ninguna imagen se envía a
+        servidores externos.
       </p>
-      <button id="btn-confirmar-permiso">✅ Entiendo, usar mi camara</button>
+      <button id="btn-confirmar-permiso">Aceptar y Encender Cámara</button>
     </section>
 
-    <!-- ====================================================== -->
-    <!-- BOTON QUE PIDE PRENDER LA CAMARA (primer paso)           -->
-    <!-- ====================================================== -->
     <section class="tarjeta">
-      <button id="btn-pedir-camara">🎥 Preparar la Camara</button>
+      <button id="btn-preparar-camara">Solicitar Acceso a Cámara</button>
     </section>
 
-    <!-- ====================================================== -->
-    <!-- AQUI SE VE EL VIDEO DE LA CAMARA (el "espejo digital")   -->
-    <!-- ====================================================== -->
     <section class="tarjeta">
-      <!--
-        autoplay   = el video empieza solo, sin que lo toquen
-        playsinline = IMPORTANTE para iPhone: evita que el video se
-                      ponga en pantalla completa el solo
-        muted      = sin sonido (la vista previa no necesita audio)
-      -->
+      <!-- playsinline: evita que iPhone abra el video en pantalla completa -->
       <video id="visor-camara" autoplay playsinline muted></video>
 
-      <p id="estado-camara">La camara esta apagada.</p>
+      <p id="estado-camara">La cámara está apagada.</p>
 
       <div class="botones-camara">
-        <button id="btn-alternar-camara">🔄 Cambiar de Camara</button>
-        <button id="btn-apagar-camara">⛔ Apagar Camara</button>
+        <button id="btn-alternar-camara">Cambiar de Cámara</button>
+        <button id="btn-apagar-camara">Apagar Cámara</button>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>Practica PWA - Instalabilidad y Camara Etica</p>
+    <p>Práctica PWA - Instalabilidad y Cámara Ética</p>
   </footer>
 
-  <!--
-    Dejamos este script al final de "body" para que el telefono primero
-    pinte toda la pagina y despues recien corra nuestro codigo.
-  -->
   <script src="./app.js"></script>
 </body>
 </html>
